@@ -10,9 +10,9 @@
 		79831CC9217119C000929E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79831CC8217119C000929E4C /* AppDelegate.swift */; };
 		79831CCB217119C000929E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79831CCA217119C000929E4C /* ViewController.swift */; };
 		79831CCE217119C000929E4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79831CCC217119C000929E4C /* Main.storyboard */; };
-		79831CD0217119C100929E4C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79831CCF217119C100929E4C /* Assets.xcassets */; };
-		79831CD3217119C100929E4C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79831CD1217119C100929E4C /* LaunchScreen.storyboard */; };
 		79831CDE217119C100929E4C /* MovieTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79831CDD217119C100929E4C /* MovieTrackerTests.swift */; };
+		79831CED2171704200929E4C /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79831CEC2171704200929E4C /* MovieList.swift */; };
+		79831D072171987400929E4C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 79831D062171987400929E4C /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,12 +30,12 @@
 		79831CC8217119C000929E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79831CCA217119C000929E4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		79831CCD217119C000929E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		79831CCF217119C100929E4C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		79831CD2217119C100929E4C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		79831CD4217119C100929E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		79831CD9217119C100929E4C /* MovieTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		79831CDD217119C100929E4C /* MovieTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTrackerTests.swift; sourceTree = "<group>"; };
 		79831CDF217119C100929E4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		79831CEC2171704200929E4C /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		79831D062171987400929E4C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +79,9 @@
 			children = (
 				79831CC8217119C000929E4C /* AppDelegate.swift */,
 				79831CCA217119C000929E4C /* ViewController.swift */,
+				79831CEC2171704200929E4C /* MovieList.swift */,
 				79831CCC217119C000929E4C /* Main.storyboard */,
-				79831CCF217119C100929E4C /* Assets.xcassets */,
-				79831CD1217119C100929E4C /* LaunchScreen.storyboard */,
+				79831D062171987400929E4C /* Images.xcassets */,
 				79831CD4217119C100929E4C /* Info.plist */,
 			);
 			path = MovieTracker;
@@ -177,9 +177,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				79831CD3217119C100929E4C /* LaunchScreen.storyboard in Resources */,
-				79831CD0217119C100929E4C /* Assets.xcassets in Resources */,
 				79831CCE217119C000929E4C /* Main.storyboard in Resources */,
+				79831D072171987400929E4C /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -197,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				79831CED2171704200929E4C /* MovieList.swift in Sources */,
 				79831CCB217119C000929E4C /* ViewController.swift in Sources */,
 				79831CC9217119C000929E4C /* AppDelegate.swift in Sources */,
 			);
@@ -227,14 +227,6 @@
 				79831CCD217119C000929E4C /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		79831CD1217119C100929E4C /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				79831CD2217119C100929E4C /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -359,14 +351,15 @@
 		79831CE3217119C100929E4C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8WM84CZZAA;
 				INFOPLIST_FILE = MovieTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.MovieTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = .com.example.MovieTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -376,14 +369,15 @@
 		79831CE4217119C100929E4C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8WM84CZZAA;
 				INFOPLIST_FILE = MovieTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.MovieTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = .com.example.MovieTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
