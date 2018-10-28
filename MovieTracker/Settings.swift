@@ -10,29 +10,38 @@ import UIKit
 import FirebaseDatabase
 
 
-class Settings: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource {
+class Settings: UIViewController{
+ 
     
+    
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var repassword: UITextField!
     @IBOutlet weak var favmovie: UITextField!
     @IBOutlet weak var favquote: UITextField!
     @IBOutlet weak var favactor: UITextField!
-    @IBOutlet weak var ratingPicker: UIPickerView!
+    @IBOutlet var notification: UILabel!
     @IBOutlet weak var nameTextField: UILabel!
-    var pickerData: [String] = [String]()
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1 }
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {return pickerData.count}
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
-        {return pickerData[row]}
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int){
-        nameTextField.text = pickerData[row]
-        }
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.ratingPicker.delegate = self
-        self.ratingPicker.dataSource = self
-        pickerData = ["A+,A,A-,B+,B,B-,C+,C,C-,D+,D,D-,F","Liked/Disliked","1,2,3,4,5"]}
+        notification.isHidden = true
+    }
+    
+    @IBAction func changepass(_ sender: UIButton) {
+        if password.text != "" {
+            if password.text != repassword.text {
+                notification.isHidden = false
+            }
+            else {
+                Database.database().reference().child("users/"+userID+"/Password").setValue(password.text)
+                notification.isHidden = true
+                password.text = ""
+                repassword.text = ""
+            }
+        }
+    }
     
     @IBAction func homescreen(_ sender: Any) {
         if (favmovie.text != ""){

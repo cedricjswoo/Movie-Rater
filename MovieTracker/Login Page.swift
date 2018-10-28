@@ -25,6 +25,9 @@ class Login_Page: UIViewController,UITextFieldDelegate {
         Database.database().reference().child("users/"+userID+"/Password").observeSingleEvent(of: .value) {(snapshot) in
             let pword = snapshot.value as? String
             if (pword == self.loginPass.text!){
+                UserDefaults.standard.set(self.loginUser.text!,forKey: "autologuser")
+                UserDefaults.standard.set(self.loginPass
+                    .text!,forKey: "autologpass")
                 self.performSegue(withIdentifier: "homeview", sender: self)}
             if (pword != self.loginPass.text!){
                 self.alerttext.isHidden = false}
@@ -35,7 +38,14 @@ class Login_Page: UIViewController,UITextFieldDelegate {
         super.viewDidLoad()
     }
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        if let ucreds = UserDefaults.standard.object(forKey: "autologuser") as? String{
+            loginUser.text = ucreds
+        }
+        if let pcreds = UserDefaults.standard.object(forKey: "autologpass") as? String{
+            loginPass.text = pcreds
+        }
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }

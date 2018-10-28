@@ -1,14 +1,13 @@
 //
-//  OtherUsersList.swift
-//  MovieTracker
+//  AccountSettings.swift
+//  
 //
 //  Created by Cedric Woo on 2018-10-26.
-//  Copyright © 2018 Cedric Woo. All rights reserved.
 //
 
 import UIKit
 
-class OtherUsersList: UIViewController {
+class AccountSettings: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
