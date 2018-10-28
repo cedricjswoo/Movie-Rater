@@ -78,15 +78,6 @@ class SearchingOthers: UIViewController,UITableViewDataSource,UITableViewDelegat
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            Database.database().reference().child("users/userID").child(postData[indexPath.row]).setValue(nil);
-            print(postData[indexPath.row])
-            postData.remove(at: indexPath.row)
-            myTableView.reloadData()
-        }
-    }
 
     override func viewDidAppear(_ animated: Bool) {
         postData.sort()

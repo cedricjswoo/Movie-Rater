@@ -71,10 +71,15 @@ class MovieList: UIViewController,UITableViewDataSource,UITableViewDelegate,UISe
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            Database.database().reference().child("users/"+userID+"/Movies").child(postData[indexPath.row]).setValue(nil);
-            print(postData[indexPath.row])
-            postData.remove(at: indexPath.row)
-            myTableView.reloadData()
+            if isSearching == false {
+                Database.database().reference().child("users/"+userID+"/Movies").child(postData[indexPath.row]).setValue(nil);
+                postData.remove(at: indexPath.row)
+                myTableView.reloadData()}
+            else {
+                Database.database().reference().child("users/"+userID+"/Movies").child(filteredData[indexPath.row]).setValue(nil);
+                filteredData.remove(at: indexPath.row)
+                myTableView.reloadData()
+            }
         }
     }
     func tableView(_ tableview: UITableView, titleForHeaderInSection section: Int) -> String? {

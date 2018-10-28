@@ -15,7 +15,6 @@ class Registration: UIViewController {
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var repassword: UITextField!
     @IBOutlet var alert1: UILabel!
-    
     @IBOutlet var alert2: UILabel!
     
     
@@ -33,7 +32,7 @@ class Registration: UIViewController {
                         Database.database().reference().child("users").child("userID").child(self.username.text!).setValue(self.username.text!)
                         Database.database().reference().child("users").child(self.username.text!).child("Name").setValue(self.username.text!)
                         
-                        
+
                         
                         self.performSegue(withIdentifier: "settings", sender: self)}}
                 else if (self.password.text != self.repassword.text){
@@ -55,5 +54,6 @@ class Registration: UIViewController {
         repassword.resignFirstResponder()
         return true
     }
+
 
 }

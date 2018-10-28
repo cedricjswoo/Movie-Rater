@@ -19,7 +19,6 @@
 		7995A62C21810D7A00823DCF /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995A62B21810D7A00823DCF /* Registration.swift */; };
 		7995A62E21810F9F00823DCF /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995A62D21810F9F00823DCF /* Settings.swift */; };
 		7995A6302182DA1900823DCF /* OtherUsers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995A62F2182DA1900823DCF /* OtherUsers.swift */; };
-		7995A6322182DA3A00823DCF /* OtherUsersList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995A6312182DA3A00823DCF /* OtherUsersList.swift */; };
 		7995A6342182DAFB00823DCF /* SearchingOthers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7995A6332182DAFB00823DCF /* SearchingOthers.swift */; };
 		B9B63580D30137333D21F95F /* Pods_MovieTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACF16DF6CB0FBB745F3CE19D /* Pods_MovieTrackerTests.framework */; };
 /* End PBXBuildFile section */
@@ -53,7 +52,6 @@
 		7995A62B21810D7A00823DCF /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
 		7995A62D21810F9F00823DCF /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		7995A62F2182DA1900823DCF /* OtherUsers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUsers.swift; sourceTree = "<group>"; };
-		7995A6312182DA3A00823DCF /* OtherUsersList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherUsersList.swift; sourceTree = "<group>"; };
 		7995A6332182DAFB00823DCF /* SearchingOthers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingOthers.swift; sourceTree = "<group>"; };
 		8184376BC01D9896D7AD90DD /* Pods-MovieTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTracker/Pods-MovieTracker.release.xcconfig"; sourceTree = "<group>"; };
 		ACF16DF6CB0FBB745F3CE19D /* Pods_MovieTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,9 +92,6 @@
 		79831CBC217119C000929E4C = {
 			isa = PBXGroup;
 			children = (
-				7995A62F2182DA1900823DCF /* OtherUsers.swift */,
-				7995A6312182DA3A00823DCF /* OtherUsersList.swift */,
-				7995A6332182DAFB00823DCF /* SearchingOthers.swift */,
 				79831CC7217119C000929E4C /* MovieTracker */,
 				79831CDC217119C100929E4C /* MovieTrackerTests */,
 				79831CC6217119C000929E4C /* Products */,
@@ -117,6 +112,8 @@
 		79831CC7217119C000929E4C /* MovieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				7995A62F2182DA1900823DCF /* OtherUsers.swift */,
+				7995A6332182DAFB00823DCF /* SearchingOthers.swift */,
 				79831CC8217119C000929E4C /* AppDelegate.swift */,
 				79831CCA217119C000929E4C /* ViewController.swift */,
 				7995A6292181067C00823DCF /* Login Page.swift */,
@@ -334,7 +331,6 @@
 				79831CCB217119C000929E4C /* ViewController.swift in Sources */,
 				7995A62C21810D7A00823DCF /* Registration.swift in Sources */,
 				79831CC9217119C000929E4C /* AppDelegate.swift in Sources */,
-				7995A6322182DA3A00823DCF /* OtherUsersList.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
