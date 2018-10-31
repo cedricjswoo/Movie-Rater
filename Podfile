@@ -6,7 +6,7 @@ target 'MovieTracker' do
   use_frameworks!
 
   # Pods for MovieTracker
-
+  pod 'Charts'
   target 'MovieTrackerTests' do
     inherit! :search_paths
     # Pods for testing

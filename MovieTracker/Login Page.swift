@@ -10,6 +10,11 @@ import UIKit
 import FirebaseDatabase
 var userID = ""
 var searchID = ""
+var acount = 0
+var bcount = 0
+var ccount = 0
+var dcount = 0
+var fcount = 0
 
 class Login_Page: UIViewController,UITextFieldDelegate {
 
@@ -34,10 +39,12 @@ class Login_Page: UIViewController,UITextFieldDelegate {
         }
     }
     
+
     override func viewDidLoad() {        
         super.viewDidLoad()
     }
     
+
     override func viewDidAppear(_ animated: Bool) {
         if let ucreds = UserDefaults.standard.object(forKey: "autologuser") as? String{
             loginUser.text = ucreds

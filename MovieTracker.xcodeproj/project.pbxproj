@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		107A431D6E2FA64CDD47D480 /* Pods_MovieTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51EFD2215C1C0088150B4FE8 /* Pods_MovieTracker.framework */; };
+		797D5E79218A27D500391986 /* Analysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797D5E78218A27D500391986 /* Analysis.swift */; };
+		797D5E7B218A27F200391986 /* MyLists.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797D5E7A218A27F200391986 /* MyLists.swift */; };
 		79831CC9217119C000929E4C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79831CC8217119C000929E4C /* AppDelegate.swift */; };
 		79831CCB217119C000929E4C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79831CCA217119C000929E4C /* ViewController.swift */; };
 		79831CCE217119C000929E4C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 79831CCC217119C000929E4C /* Main.storyboard */; };
@@ -37,6 +39,8 @@
 		1F6BB598E2BC616922D322EE /* Pods-MovieTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTrackerTests/Pods-MovieTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		51EFD2215C1C0088150B4FE8 /* Pods_MovieTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		77DF32B2A691B61622F89389 /* Pods-MovieTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MovieTrackerTests/Pods-MovieTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		797D5E78218A27D500391986 /* Analysis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analysis.swift; sourceTree = "<group>"; };
+		797D5E7A218A27F200391986 /* MyLists.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyLists.swift; sourceTree = "<group>"; };
 		79831CC5217119C000929E4C /* MovieTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		79831CC8217119C000929E4C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		79831CCA217119C000929E4C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +116,8 @@
 		79831CC7217119C000929E4C /* MovieTracker */ = {
 			isa = PBXGroup;
 			children = (
+				797D5E7A218A27F200391986 /* MyLists.swift */,
+				797D5E78218A27D500391986 /* Analysis.swift */,
 				7995A62F2182DA1900823DCF /* OtherUsers.swift */,
 				7995A6332182DAFB00823DCF /* SearchingOthers.swift */,
 				79831CC8217119C000929E4C /* AppDelegate.swift */,
@@ -277,6 +283,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-MovieTracker/Pods-MovieTracker-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -285,6 +292,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -324,6 +332,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7995A6342182DAFB00823DCF /* SearchingOthers.swift in Sources */,
+				797D5E79218A27D500391986 /* Analysis.swift in Sources */,
 				7995A62E21810F9F00823DCF /* Settings.swift in Sources */,
 				7995A6302182DA1900823DCF /* OtherUsers.swift in Sources */,
 				79831CED2171704200929E4C /* MovieList.swift in Sources */,
@@ -331,6 +340,7 @@
 				79831CCB217119C000929E4C /* ViewController.swift in Sources */,
 				7995A62C21810D7A00823DCF /* Registration.swift in Sources */,
 				79831CC9217119C000929E4C /* AppDelegate.swift in Sources */,
+				797D5E7B218A27F200391986 /* MyLists.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

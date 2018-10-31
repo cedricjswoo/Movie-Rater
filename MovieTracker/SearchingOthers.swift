@@ -14,6 +14,8 @@ class SearchingOthers: UIViewController,UITableViewDataSource,UITableViewDelegat
     @IBOutlet weak var myTableView: UITableView!
     var postData = [String]()
     var filteredData = [String]()
+    var postDataRating = [String]()
+    var filteredDataRating = [String]()
     @IBOutlet weak var searchBar: UISearchBar!
     
     var isSearching = false
@@ -29,25 +31,27 @@ class SearchingOthers: UIViewController,UITableViewDataSource,UITableViewDelegat
         Database.database().reference().child("users/userID").observe(.childAdded) { (Snapshot) in
             let post = Snapshot.value as? String
             if let actualPost = post {
+                Database.database().reference().child("users/"+actualPost).child("Movies").observe(.value, with: { (snapshot: DataSnapshot!) in let ratingCount = String(snapshot.childrenCount)
                 self.postData.append(actualPost)
+                self.postDataRating.append(ratingCount+" Ratings"+"  :  "+actualPost)
                 self.myTableView.reloadData()
-            }
-        }
+            })
+            }}
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
-            return filteredData.count
+            return filteredDataRating.count
         }
-        return postData.count
+        return postDataRating.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
         if isSearching {
-            cell.textLabel?.text =  filteredData[indexPath.row]}
+            cell.textLabel?.text =  filteredDataRating[indexPath.row]}
         else {
-            cell.textLabel?.text = postData[indexPath.row]}
+            cell.textLabel?.text = postDataRating[indexPath.row]}
         
         return cell
     }
@@ -59,6 +63,7 @@ class SearchingOthers: UIViewController,UITableViewDataSource,UITableViewDelegat
             myTableView.reloadData()}
         else {
             isSearching = true
+            filteredDataRating = postDataRating.filter{$0.contains(searchBar.text!)}
             filteredData = postData.filter{$0.contains(searchBar.text!)}
             myTableView.reloadData()
         }
@@ -79,8 +84,5 @@ class SearchingOthers: UIViewController,UITableViewDataSource,UITableViewDelegat
         self.view.endEditing(true)
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        postData.sort()
-        myTableView.reloadData()
-    }
+
 }

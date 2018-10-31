@@ -31,10 +31,14 @@ class MovieList: UIViewController,UITableViewDataSource,UITableViewDelegate,UISe
             let post = Snapshot.value as? String
             if let actualPost = post {
                 self.postData.append(actualPost)
+                acount = (self.postData.filter{$0.contains("A+,")}).count+(self.postData.filter{$0.contains("A,")}).count+(self.postData.filter{$0.contains("A-,")}).count
+                bcount = (self.postData.filter{$0.contains("B+,")}).count+(self.postData.filter{$0.contains("B,")}).count+(self.postData.filter{$0.contains("B-,")}).count
+                ccount = (self.postData.filter{$0.contains("C+,")}).count+(self.postData.filter{$0.contains("C,")}).count+(self.postData.filter{$0.contains("C-,")}).count
+                dcount = (self.postData.filter{$0.contains("D+,")}).count+(self.postData.filter{$0.contains("D,")}).count+(self.postData.filter{$0.contains("D-,")}).count
+                fcount = (self.postData.filter{$0.contains("F,")}).count}
                 self.myTableView.reloadData()
             }
         }
-    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching {
