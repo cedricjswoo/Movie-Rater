@@ -18,6 +18,11 @@ class MovieList: UIViewController,UITableViewDataSource,UITableViewDelegate,UISe
     @IBOutlet weak var searchBar: UISearchBar!
     
     var isSearching = false
+    var acounter = 0
+    var bcounter = 0
+    var ccounter = 0
+    var dcounter = 0
+    var fcounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +36,21 @@ class MovieList: UIViewController,UITableViewDataSource,UITableViewDelegate,UISe
             let post = Snapshot.value as? String
             if let actualPost = post {
                 self.postData.append(actualPost)
-                acount = (self.postData.filter{$0.contains("A+,")}).count+(self.postData.filter{$0.contains("A,")}).count+(self.postData.filter{$0.contains("A-,")}).count
-                bcount = (self.postData.filter{$0.contains("B+,")}).count+(self.postData.filter{$0.contains("B,")}).count+(self.postData.filter{$0.contains("B-,")}).count
-                ccount = (self.postData.filter{$0.contains("C+,")}).count+(self.postData.filter{$0.contains("C,")}).count+(self.postData.filter{$0.contains("C-,")}).count
-                dcount = (self.postData.filter{$0.contains("D+,")}).count+(self.postData.filter{$0.contains("D,")}).count+(self.postData.filter{$0.contains("D-,")}).count
-                fcount = (self.postData.filter{$0.contains("F,")}).count}
-                self.myTableView.reloadData()
-            }
+                if actualPost.contains("A+,")||actualPost.contains("A,")||actualPost.contains("A-,"){
+                    self.acounter = self.acounter + 1}
+                else if actualPost.contains("B+,")||actualPost.contains("B,")||actualPost.contains("B-,"){
+                    self.bcounter = self.bcounter + 1}
+                else if actualPost.contains("C+,")||actualPost.contains("C,")||actualPost.contains("C-,"){
+                    self.ccounter = self.ccounter + 1}
+                else if actualPost.contains("D+,")||actualPost.contains("D,")||actualPost.contains("D-,"){
+                    self.dcounter = self.dcounter + 1}
+                else if actualPost.contains("F,"){
+                    self.fcounter = self.fcounter + 1}}
+            acount = self.acounter
+            bcount = self.bcounter
+            ccount = self.ccounter
+            dcount = self.dcounter
+            fcount = self.fcounter            }
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

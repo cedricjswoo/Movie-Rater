@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 
 
-class OtherUsers: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
+class OtherUsers: UIViewController {
     
     @IBOutlet weak var image: UIImageView!
     @IBOutlet var myNameField: UILabel!
@@ -18,23 +18,18 @@ class OtherUsers: UIViewController,UITableViewDataSource,UITableViewDelegate,UIS
     @IBOutlet var favouriteQuote: UILabel!
     @IBOutlet var favouriteMovie: UILabel!
     @IBOutlet var ratingCount: UILabel!
-    @IBOutlet weak var myTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet var rank: UILabel!
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var recommend: UILabel!
     
-    
-    
-    var postData = [String]()
-    var filteredData = [String]()
-    
-    var isSearching = false
+    var acounter = 0
+    var bcounter = 0
+    var ccounter = 0
+    var dcounter = 0
+    var fcounter = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        myTableView.delegate = self
-        myTableView.dataSource = self
-        searchBar.delegate = self
-        searchBar.returnKeyType = UIReturnKeyType.done
         Database.database().reference().child("users/"+searchID+"/Movies").observe(.value, with: { (snapshot: DataSnapshot!) in let ratings = (snapshot.childrenCount)
             self.ratingCount.text! = String(ratings)
             if ratings <= 50 {
@@ -82,54 +77,42 @@ class OtherUsers: UIViewController,UITableViewDataSource,UITableViewDelegate,UIS
             self.favouriteQuote.text = snapshot.value as? String}
         Database.database().reference().child("users/"+searchID+"/favActor").observeSingleEvent(of: .value) {(snapshot) in
             self.favouriteActor.text = snapshot.value as? String}
+        Database.database().reference().child("users/"+searchID+"/recommend").observeSingleEvent(of: .value) {(snapshot) in
+            self.recommend.text = snapshot.value as? String}
         Database.database().reference().child("users/"+searchID+"/Movies").observe(.childAdded) { (Snapshot) in
             let post = Snapshot.value as? String
             if let actualPost = post {
-                self.postData.append(actualPost)
-                acount = (self.postData.filter{$0.contains("A+,")}).count+(self.postData.filter{$0.contains("A,")}).count+(self.postData.filter{$0.contains("A-,")}).count
-                bcount = (self.postData.filter{$0.contains("B+,")}).count+(self.postData.filter{$0.contains("B,")}).count+(self.postData.filter{$0.contains("B-,")}).count
-                ccount = (self.postData.filter{$0.contains("C+,")}).count+(self.postData.filter{$0.contains("C,")}).count+(self.postData.filter{$0.contains("C-,")}).count
-                dcount = (self.postData.filter{$0.contains("D+,")}).count+(self.postData.filter{$0.contains("D,")}).count+(self.postData.filter{$0.contains("D-,")}).count
-                fcount = (self.postData.filter{$0.contains("F,")}).count}
-            self.myTableView.reloadData()}
-        }
+                if actualPost.contains("A+,")||actualPost.contains("A,")||actualPost.contains("A-,"){
+                    self.acounter = self.acounter + 1}
+                else if actualPost.contains("B+,")||actualPost.contains("B,")||actualPost.contains("B-,"){
+                    self.bcounter = self.bcounter + 1}
+                else if actualPost.contains("C+,")||actualPost.contains("C,")||actualPost.contains("C-,"){
+                    self.ccounter = self.ccounter + 1}
+                else if actualPost.contains("D+,")||actualPost.contains("D,")||actualPost.contains("D-,"){
+                    self.dcounter = self.dcounter + 1}
+                else if actualPost.contains("F,"){
+                    self.fcounter = self.fcounter + 1}}
+            acount = self.acounter
+            bcount = self.bcounter
+            ccount = self.ccounter
+            dcount = self.dcounter
+            fcount = self.fcounter
+        }}
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if isSearching {
-            return filteredData.count
-        }
-        return postData.count
+
+    @IBAction func setDefaultLabelText(_ sender: UIButton) {
+        if nameTextField.text != ""{
+            Database.database().reference().child("users/"+searchID).child("Recommended").child(nameTextField.text!+" : "+userID).setValue(nameTextField.text!+" : "+userID)
+            nameTextField.text = ""
+        }}
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nameTextField.resignFirstResponder()
+        return true
     }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        if isSearching {
-            cell.textLabel?.text =  filteredData[indexPath.row]}
-        else {
-            cell.textLabel?.text = postData[indexPath.row]}
-        
-        return cell
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if searchBar.text == nil || searchBar.text == "" {
-            isSearching = false
-            view.endEditing(true)
-            myTableView.reloadData()}
-        else {
-            isSearching = true
-            filteredData = postData.filter{$0.contains(searchBar.text!)}
-            myTableView.reloadData()
-        }
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-    
-
-    override func viewDidAppear(_ animated: Bool) {
-        postData.sort()
-        myTableView.reloadData()
-    }
 }
+
+//Recently Added
+//Popup notifcation for most recently added

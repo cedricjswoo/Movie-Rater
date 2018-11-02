@@ -14,34 +14,20 @@ class Settings: UIViewController{
  
     
     
-    @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var repassword: UITextField!
+
     @IBOutlet weak var favmovie: UITextField!
     @IBOutlet weak var favquote: UITextField!
     @IBOutlet weak var favactor: UITextField!
-    @IBOutlet var notification: UILabel!
     @IBOutlet weak var nameTextField: UILabel!
-
+    @IBOutlet weak var recommendation: UITextField!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        notification.isHidden = true
     }
     
-    @IBAction func changepass(_ sender: UIButton) {
-        if password.text != "" {
-            if password.text != repassword.text {
-                notification.isHidden = false
-            }
-            else {
-                Database.database().reference().child("users/"+userID+"/Password").setValue(password.text)
-                notification.isHidden = true
-                password.text = ""
-                repassword.text = ""
-            }
-        }
-    }
+
     
     @IBAction func homescreen(_ sender: Any) {
         if (favmovie.text != ""){
@@ -49,7 +35,9 @@ class Settings: UIViewController{
         if (favquote.text != ""){
             Database.database().reference().child("users/"+userID+"/favQuote").setValue(favquote.text)}
         if (favactor.text != ""){
-            Database.database().reference().child("users/"+userID+"/favActor").setValue(favactor.text)}}
+            Database.database().reference().child("users/"+userID+"/favActor").setValue(favactor.text)}
+        if (recommendation.text != ""){
+            Database.database().reference().child("users/"+userID+"/recommend").setValue(recommendation.text)}}
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
@@ -58,9 +46,12 @@ class Settings: UIViewController{
         favmovie.resignFirstResponder()
         favactor.resignFirstResponder()
         favquote.resignFirstResponder()
+        recommendation.resignFirstResponder()
         return true
     }
 }
 // STRETCH GOALS
 // ALLOW PICKER DATA TO CHANGE
 // CHANGE YOUR USERNAME/PASSWORD HERE
+
+//Have Label show picture number
