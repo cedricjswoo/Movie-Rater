@@ -20,16 +20,36 @@ class Settings: UIViewController{
     @IBOutlet weak var favactor: UITextField!
     @IBOutlet weak var nameTextField: UILabel!
     @IBOutlet weak var recommendation: UITextField!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var posterField: UITextField!
     
+
+    @IBAction func forwardselect(_ sender: UIButton) {
+       Database.database().reference().child("users/"+userID+"/Movies").observe(.value, with: { (snapshot: DataSnapshot!) in let ratings = (snapshot.childrenCount)
+            if selectposter < Int(floor(Double(ratings/25))){
+                selectposter += 1
+                self.posterField.text! = posters[selectposter]
+                self.image.image = UIImage(named: posters[selectposter])
+            }
+        })}
     
+    @IBAction func reverseselect(_ sender: UIButton) {
+        if selectposter > 0 {
+            selectposter -= 1
+            posterField.text! = posters[selectposter]
+            image.image = UIImage(named: posters[selectposter])
+        }}
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        image.image = UIImage(named: posters[selectposter])
     }
     
 
     
     @IBAction func homescreen(_ sender: Any) {
+        if (posterField.text != ""){
+            Database.database().reference().child("users/"+userID+"/poster").setValue(posterField.text)}
         if (favmovie.text != ""){
             Database.database().reference().child("users/"+userID+"/favMovie").setValue(favmovie.text)}
         if (favquote.text != ""){
@@ -52,6 +72,3 @@ class Settings: UIViewController{
 }
 // STRETCH GOALS
 // ALLOW PICKER DATA TO CHANGE
-// CHANGE YOUR USERNAME/PASSWORD HERE
-
-//Have Label show picture number
